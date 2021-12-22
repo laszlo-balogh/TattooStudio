@@ -8,6 +8,10 @@ namespace TattooStudio.Repository
     public class CustomerRepository : ICustomerRepository
     {
         TattooStudioDbContext db;
+        public CustomerRepository(TattooStudioDbContext db)
+        {
+            this.db = db;
+        }
         public void Create(Customer customer)
         {
             db.Add(customer);

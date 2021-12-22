@@ -8,9 +8,13 @@ using TattooStudio.Models;
 
 namespace TattooStudio.Repository
 {
-    class WorkRepository : IWorkREpository
+    public class WorkRepository : IWorkRepository
     {
         TattooStudioDbContext db;
+        public WorkRepository(TattooStudioDbContext db)
+        {
+            this.db = db;
+        }
         public void Create(Work work)
         {
             db.Add(work);

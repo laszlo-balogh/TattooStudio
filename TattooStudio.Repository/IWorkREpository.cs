@@ -7,7 +7,7 @@ using TattooStudio.Models;
 
 namespace TattooStudio.Repository
 {
-    public interface IWorkREpository
+    public interface IWorkRepository
     {
         void Create(Work work);
         void Delete(int id);
