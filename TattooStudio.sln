@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TattooStudio.Client", "TattooStudio\TattooStudio.Client.csproj", "{B9B4C7A6-1FA3-403C-8A8E-BBDF13E3CA2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TattooStudio.Client", "TattooStudio\TattooStudio.Client.csproj", "{B9B4C7A6-1FA3-403C-8A8E-BBDF13E3CA2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TattooStudio.Repository", "TattooStudio.Repository\TattooStudio.Repository.csproj", "{B3887DF6-7CD2-4A30-8587-45D86EA86054}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TattooStudio.Repository", "TattooStudio.Repository\TattooStudio.Repository.csproj", "{B3887DF6-7CD2-4A30-8587-45D86EA86054}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TattooStudio.Logic", "TattooStudio.Logic\TattooStudio.Logic.csproj", "{7411CDFE-E86C-4FA9-9562-577B89081743}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TattooStudio.Logic", "TattooStudio.Logic\TattooStudio.Logic.csproj", "{7411CDFE-E86C-4FA9-9562-577B89081743}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TattooStudio.Data", "TattooStudio.Data\TattooStudio.Data.csproj", "{14328235-CAD7-4C1D-9BB5-0BEC72775FBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TattooStudio.Data", "TattooStudio.Data\TattooStudio.Data.csproj", "{14328235-CAD7-4C1D-9BB5-0BEC72775FBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TattooStudio.Models", "TattooStudio.Models\TattooStudio.Models.csproj", "{09E1434B-3E6D-4592-9659-B4508463231A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TattooStudio.Models", "TattooStudio.Models\TattooStudio.Models.csproj", "{09E1434B-3E6D-4592-9659-B4508463231A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TattooStudio.Endpoint", "TattooStudio.Endpoint\TattooStudio.Endpoint.csproj", "{7EDF45FA-0830-42B8-A949-C51B3CBFF8A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{09E1434B-3E6D-4592-9659-B4508463231A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E1434B-3E6D-4592-9659-B4508463231A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E1434B-3E6D-4592-9659-B4508463231A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EDF45FA-0830-42B8-A949-C51B3CBFF8A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EDF45FA-0830-42B8-A949-C51B3CBFF8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EDF45FA-0830-42B8-A949-C51B3CBFF8A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EDF45FA-0830-42B8-A949-C51B3CBFF8A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
