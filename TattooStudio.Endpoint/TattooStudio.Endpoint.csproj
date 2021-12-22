@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TattooStudio.Data\TattooStudio.Data.csproj" />
+    <ProjectReference Include="..\TattooStudio.Logic\TattooStudio.Logic.csproj" />
+    <ProjectReference Include="..\TattooStudio.Models\TattooStudio.Models.csproj" />
+    <ProjectReference Include="..\TattooStudio.Repository\TattooStudio.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
