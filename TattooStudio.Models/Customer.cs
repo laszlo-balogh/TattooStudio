@@ -20,13 +20,12 @@ namespace TattooStudio.Models
         public string Email { get; set; }
         [Required]
         public DateTime BornDate { get; set; }
-        public List<Work> Works { get; set; }
+        public virtual List<Work> Works { get; set; }
         public Customer()
         {
-            if (Works==null)
-            {
+           
                 Works= new List<Work>();
-            }
+            
         }
 
         

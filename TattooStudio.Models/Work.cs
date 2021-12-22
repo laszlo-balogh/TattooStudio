@@ -16,20 +16,19 @@ namespace TattooStudio.Models
         public int WorkID { get; set; }
         [Required]
         [NotMapped]
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
         [ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
-        public List<Tattoo> Tattoos { get; set; }       
+        public virtual List<Tattoo> Tattoos { get; set; }       
         public DateTime Date { get; set; }
         public int TattooCount { get; set; }
         public int Price { get { return Tattoos.Sum(x => x.Price); } }
 
         public Work()
         {
-            if (Tattoos==null)
-            {
+           
                 Tattoos = new List<Tattoo>();
-            }
+            
         }
 
     }
