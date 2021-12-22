@@ -48,25 +48,25 @@ namespace TattooStudio.Data
             Work w2 = new Work() { WorkID = 2, Date = new DateTime(2015, 7, 7), CustomerID = c2.CustomerID };
             Work w3 = new Work() { WorkID = 3, Date = new DateTime(2019, 3, 3), CustomerID = c3.CustomerID };
 
-            Tattoo t1 = new Tattoo() { TattooID = 1,Sample = Samples.Animal, Price = 21000 };
-            Tattoo t2 = new Tattoo() { TattooID = 2,Sample = Samples.Animal, Price = 14000 };
+            Tattoo t1 = new Tattoo() { TattooID = 1,Sample = Samples.Animal, Price = 21000 };           
+            Tattoo t2 = new Tattoo() { TattooID = 2, Sample = Samples.Person, Price = 31000 };
             Tattoo t3 = new Tattoo() { TattooID = 3, Sample = Samples.Abstract, Price = 7000 };
             Tattoo t4 = new Tattoo() { TattooID = 4, Sample = Samples.Name, Price = 5000 };
-            Tattoo t5 = new Tattoo() { TattooID = 5, Sample = Samples.Person, Price = 31000 };
-            Tattoo t6 = new Tattoo() { TattooID = 6, Sample = Samples.Name, Price = 3400 };
+           
+           
 
-            w1.Tattoos.Add(t1);
-            w1.Tattoos.Add(t2);
-            w1.Tattoos.Add(t3);
+            //w1.Tattoos.Add(t1);
+            //w1.Tattoos.Add(t2);
+            //w1.Tattoos.Add(t3);
 
-            w2.Tattoos.Add(t4);
-            w2.Tattoos.Add(t5);
+            //w2.Tattoos.Add(t4);
+            //w2.Tattoos.Add(t2);
 
-            w3.Tattoos.Add(t6);
+            //w3.Tattoos.Add(t4);
 
             modelBuilder.Entity<Work>().HasData(w1, w2, w3);
             modelBuilder.Entity<Customer>().HasData(c1, c2, c3);
-            modelBuilder.Entity<Tattoo>().HasData(t1, t2, t3, t4, t5, t6);
+            modelBuilder.Entity<Tattoo>().HasData(t1, t2, t3, t4);
 
 
         }
