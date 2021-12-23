@@ -10,6 +10,7 @@ using TattooStudio.Models;
 namespace TattooStudio.Endpoint.Controllers
 {
     [Route("[controller]/[action]")]
+    //[Route("[controller]/{name}&{date}/[action]")]
     [ApiController]
     public class TaskController : ControllerBase
     {
@@ -19,16 +20,12 @@ namespace TattooStudio.Endpoint.Controllers
         {
             this.logic = logic;
         }
+             
 
         [HttpGet]
-        public int HowManyTimes(string name, DateTime bornDate)
+        public IEnumerable<object> WhatWantedByName()
         {
-            return logic.HowManyTimes(name, bornDate);
-        }
-        [HttpGet]
-        public IEnumerable<KeyValuePair<DateTime, List<Tattoo>>> WhatWanted(string name, DateTime bornDate)
-        {
-            return logic.WhatWanted(name, bornDate);
+            return logic.WhatWantedByName();
         }
     }
 }

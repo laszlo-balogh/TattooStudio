@@ -24,5 +24,11 @@ namespace TattooStudio.Endpoint.Controllers
             customerLogic.Create(customer);
         }
 
+        [HttpGet]
+        public IEnumerable<Customer> Get()
+        {
+            return customerLogic.ReadAll();
+        }
+
     }
 }
