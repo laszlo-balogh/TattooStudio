@@ -1,4 +1,5 @@
 ﻿using System;
+using TattooStudio.Client;
 
 namespace TattooStudio
 {
@@ -6,7 +7,18 @@ namespace TattooStudio
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            RestService restService = new RestService("http://localhost:31552/");
+            Menu m = new Menu(restService);
+            try
+            {
+                m.Start();
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+            
         }
     }
 }
