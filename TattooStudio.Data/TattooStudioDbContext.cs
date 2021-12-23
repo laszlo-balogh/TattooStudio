@@ -15,8 +15,6 @@ namespace TattooStudio.Data
         public virtual DbSet<ReadyTattoo> ReadyTattoos { get; set; }
         public virtual DbSet<Tattoo> Tattoos { get; set; }
 
-
-
         public TattooStudioDbContext()
         {
             this.Database.EnsureCreated();
