@@ -17,27 +17,24 @@ namespace TattooStudio.Logic
         {
             this.workRepo = workRepo;
             this.customerRepo = customerRepo;
-        }
-
-        public int HowManyTimes(string name,DateTime bornDate)
+        }           
+        public IEnumerable<object> WhatWantedByName()
         {
+
+
+            //var v1 = from x in workRepo.ReadAll()
+            //         where x.Customer.Name ==name/* "Nagy Ákos"*/ && x.Customer.BornDate == bornDate/*new DateTime(1999, 1, 14)*/
+            //         select new KeyValuePair<DateTime, List<ReadyTattoo>>(x.Date,x.Tattoos);
+
             var v1 = from x in workRepo.ReadAll()
-                     where x.Customer.Name == name && x.Customer.BornDate == bornDate
                      select new
                      {
-                         Nmae = x.Customer.Name
+                         Name = x.Customer.Name,
+                         Date = x.Date,
+                         Tattoos = x.Tattoos
                      };
-
-            return v1.Count();
-
-        }
-
-        public IEnumerable<KeyValuePair<DateTime, List<Tattoo>>> WhatWanted(string name, DateTime bornDate)
-        {
-            var v1 = from x in workRepo.ReadAll()
-                     where x.Customer.Name == name && x.Customer.BornDate == bornDate
-                     select new KeyValuePair<DateTime, List<Tattoo>>(x.Date,x.Tattoos);                  
-            return v1;
+            var w1 = v1.AsEnumerable().GroupBy(x => x.Name);
+            return w1;
         }
     }
 }

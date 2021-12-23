@@ -55,5 +55,10 @@ namespace TattooStudio.Logic
                 this.customerRepo.Create(customer);
             }
         }
+
+        public IEnumerable<Customer> ReadAll()
+        {
+            return this.customerRepo.ReadAll();
+        }
     }
 }
