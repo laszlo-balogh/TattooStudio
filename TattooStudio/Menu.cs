@@ -12,13 +12,11 @@ namespace TattooStudio.Client
     {
         RestService restService;
 
-        Customer cCreate;
-        Customer listCust;
+        Customer cCreate;        
         public Menu(RestService restService)
         {
             this.restService = restService;
-            this.cCreate = new Customer();
-            this.listCust = new Customer();
+            this.cCreate = new Customer();            
         }
 
         public void Start()
@@ -32,9 +30,7 @@ namespace TattooStudio.Client
                     .Add("Back", ConsoleMenu.Close).Show())              
                .Add("WhatWantedByName", () => NonCrud("name"))
                .Add("Back", ConsoleMenu.Close).Show())
-
                 .Add("Exit", ConsoleMenu.Close);
-
 
             menu.Show();
 
@@ -83,6 +79,7 @@ namespace TattooStudio.Client
             }
             else if (property == "BornDate")
             {
+                // 2000.11.11
                 Console.WriteLine($"BornDate: {cCreate.BornDate}\r");
                 Console.Write("New BornDate: ");
                 string[] year = Console.ReadLine().Split(".");
@@ -96,9 +93,10 @@ namespace TattooStudio.Client
                 string p = Console.ReadLine();
                 cCreate.Email = p;
             }
-            else
+            else if(property== "Create")
             {
-                restService.Post<Customer>(cCreate, "customer");
+                restService.Post(cCreate, "customer");
+                cCreate = new Customer();
             }
         }
 
