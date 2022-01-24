@@ -10,13 +10,13 @@ namespace TattooStudio.Logic
 {
     public class CustomerLogic : ICustomerLogic
     {
-        ICustomerRepository customerRepo;
+        private readonly ICustomerRepository customerRepo;
         public CustomerLogic(ICustomerRepository customerRepo)
         {
             this.customerRepo = customerRepo;
         }
 
-        public void Create(Customer customer)
+        public Customer Create(Customer customer)
         {
             if (customer == null)
             {
@@ -29,7 +29,7 @@ namespace TattooStudio.Logic
             else if (customer.BornDate == default)
             {
                 throw new ArgumentException("Born date cannot be empty");
-            }            
+            }
             else if (customer.Email == null)
             {
                 throw new ArgumentException("Email cannot be null");
@@ -50,13 +50,37 @@ namespace TattooStudio.Logic
             {
                 throw new ArgumentException("Wrong email format");
             }
-            else
+
+            return customerRepo.Create(customer);
+        }
+
+        public void Delete(int id)
+        {
+            Customer customer = Read(id);
+
+            if (customer!=null)          
             {
-                this.customerRepo.Create(customer);
+                if (!customer.IsDeleted)
+                {
+                    customerRepo.Delete(id);
+                }
+                
             }
         }
 
-        public IEnumerable<Customer> ReadAll()
+        public Customer Read(int id)
+        {
+            if (id<1)
+            {
+                throw new ArgumentException("id cannot be lower than 1");
+            }
+            else
+            {
+                return customerRepo.Read(id);
+            }
+        }
+
+        public List<Customer> ReadAll()
         {
             return this.customerRepo.ReadAll();
         }

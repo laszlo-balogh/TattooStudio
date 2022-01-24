@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,28 @@ namespace TattooStudio.Repository
 {
     public class WorkRepository : IWorkRepository
     {
-        TattooStudioDbContext db;
-        public WorkRepository(TattooStudioDbContext db)
+        private readonly TattooStudioDbContext db;
+        private readonly ILogger<WorkRepository> logger;
+        public WorkRepository(ILogger<WorkRepository> logger,TattooStudioDbContext db)
         {
             this.db = db;
+            this.logger = logger;
         }
-        public void Create(Work work)
+        public Work Create(Work work)
         {
-            db.Add(work);
-            db.SaveChanges();
+            try
+            {
+                db.Add(work);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.GetType().Name + " - " + ex.Message, ex.Message);
+                return null;
+            }
+      
+
+            return work;
         }
 
         public void Delete(int id)
@@ -32,11 +46,20 @@ namespace TattooStudio.Repository
             return db.Works.FirstOrDefault(w => w.WorkID == id);
         }
 
-        public IQueryable<Work> ReadAll()
+        public List<Work> ReadAll()
         {
-            return db.Works;
+            try
+            {
+                return db.Works.ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.GetType().Name + " - " + ex.Message, ex.Message);
+                return new List<Work>();
+            }
+
+           
         }
 
-       
     }
 }

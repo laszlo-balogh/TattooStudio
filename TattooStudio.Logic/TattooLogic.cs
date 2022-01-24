@@ -10,13 +10,13 @@ namespace TattooStudio.Logic
 {
     public class TattooLogic : ITattooLogic
     {
-        ITattooRepository tattooRepo;
+        private readonly ITattooRepository tattooRepo;
         public TattooLogic(ITattooRepository tattooRepo)
         {
             this.tattooRepo = tattooRepo;
         }
 
-        public IEnumerable<Tattoo> ReadAll()
+        public List<Tattoo> ReadAll()
         {
             return this.tattooRepo.ReadAll();
         }

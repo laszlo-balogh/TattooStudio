@@ -6,7 +6,10 @@ namespace TattooStudio.Logic
 {
     public interface ICustomerLogic
     {
-        void Create(Customer customer);
-        IEnumerable<Customer> ReadAll();
+        Customer Create(Customer customer);
+        List<Customer> ReadAll();
+
+        void Delete(int id);
+        Customer Read(int id);
     }
 }

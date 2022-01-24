@@ -9,9 +9,9 @@ namespace TattooStudio.Repository
 {
     public interface ITattooRepository
     {
-        void Create(Tattoo tattoo);
+        Tattoo Create(Tattoo tattoo);
         void Delete(int id);
         Tattoo Read(int id);
-        IQueryable<Tattoo> ReadAll();
+        List<Tattoo> ReadAll();
     }
 }

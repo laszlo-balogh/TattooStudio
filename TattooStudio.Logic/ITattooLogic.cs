@@ -9,6 +9,6 @@ namespace TattooStudio.Logic
 {
     public interface ITattooLogic
     {
-        IEnumerable<Tattoo> ReadAll();
+        List<Tattoo> ReadAll();
     }
 }

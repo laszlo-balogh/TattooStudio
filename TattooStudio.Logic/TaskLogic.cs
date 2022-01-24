@@ -10,21 +10,16 @@ namespace TattooStudio.Logic
 {
     public class TaskLogic : ITaskLogic
     {
-        IWorkRepository workRepo;
-        ICustomerRepository customerRepo;
+        private readonly IWorkRepository workRepo;
+        
 
-        public TaskLogic(IWorkRepository workRepo, ICustomerRepository customerRepo)
+        public TaskLogic(IWorkRepository workRepo)
         {
             this.workRepo = workRepo;
-            this.customerRepo = customerRepo;
+            
         }           
         public IEnumerable<object> WhatWantedByName()
-        {
-
-
-            //var v1 = from x in workRepo.ReadAll()
-            //         where x.Customer.Name ==name/* "Nagy Ákos"*/ && x.Customer.BornDate == bornDate/*new DateTime(1999, 1, 14)*/
-            //         select new KeyValuePair<DateTime, List<ReadyTattoo>>(x.Date,x.Tattoos);
+        {           
 
             var v1 = from x in workRepo.ReadAll()
                      select new

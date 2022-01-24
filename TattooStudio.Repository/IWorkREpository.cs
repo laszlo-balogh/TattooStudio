@@ -9,10 +9,10 @@ namespace TattooStudio.Repository
 {
     public interface IWorkRepository
     {
-        void Create(Work work);
+        Work Create(Work work);
         void Delete(int id);
         Work Read(int id);
-        IQueryable<Work> ReadAll();       
+        List<Work> ReadAll();       
 
     }
 }

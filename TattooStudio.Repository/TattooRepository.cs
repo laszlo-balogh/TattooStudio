@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,30 @@ namespace TattooStudio.Repository
 {
     public class TattooRepository : ITattooRepository
     {
-        TattooStudioDbContext db;
-        public TattooRepository(TattooStudioDbContext db)
+        private readonly TattooStudioDbContext db;
+        private readonly ILogger<TattooRepository> logger;
+        public TattooRepository(ILogger<TattooRepository> logger,TattooStudioDbContext db)
         {
             this.db = db;
+            this.logger = logger;
         }
-        public void Create(Tattoo tattoo)
+        public Tattoo Create(Tattoo tattoo)
         {
-            db.Add(tattoo);
-            db.SaveChanges();
+
+            try
+            {
+                db.Add(tattoo);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.GetType().Name + " - " + ex.Message, ex.Message);
+                return null;
+            }
+
+           
+            
+            return tattoo;
         }
         public void Delete(int id)
         {
@@ -31,9 +47,19 @@ namespace TattooStudio.Repository
             return db.Tattoos.FirstOrDefault(t => t.TattooID == id);
         }
 
-        public IQueryable<Tattoo> ReadAll()
+        public List<Tattoo> ReadAll()
         {
-            return db.Tattoos;
+            try
+            {
+                return db.Tattoos.ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.GetType().Name + " - " + ex.Message, ex.Message);
+                return new List<Tattoo>();
+            }
+
+            
         }
     }
 }
