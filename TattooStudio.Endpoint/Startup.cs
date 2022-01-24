@@ -35,6 +35,7 @@ namespace TattooStudio.Endpoint
             services.AddTransient<ICustomerLogic, CustomerLogic>();
             services.AddTransient<ITaskLogic, TaskLogic>();           
             services.AddTransient<TattooStudioDbContext, TattooStudioDbContext>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             var configSection = Configuration.GetSection("DataBase");
             DatabaseSettings databaseSettings = new DatabaseSettings();
