@@ -14,18 +14,19 @@ namespace TattooStudio.Endpoint.Controllers
     [ApiController]
     public class TaskController : ControllerBase
     {
-        ITaskLogic logic;
+        private readonly ITaskLogic logic;
 
         public TaskController(ITaskLogic logic)
         {
             this.logic = logic;
         }
-             
+
 
         [HttpGet]
         public IEnumerable<object> WhatWantedByName()
         {
             return logic.WhatWantedByName();
         }
+        
     }
 }

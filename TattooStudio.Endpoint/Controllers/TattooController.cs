@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +11,23 @@ namespace TattooStudio.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class TattooController
+    public class TattooController : ControllerBase
     {
-        ITattooLogic logic;
+        private readonly ITattooLogic logic;
+        private readonly ILogger<TattooController> logger;
         public TattooController(ITattooLogic logic)
         {
             this.logic = logic;
         }
 
         [HttpGet]
-        public IEnumerable<Tattoo> Get()
+        public List<Tattoo> Get()
         {
-            return logic.ReadAll();
+            logger.LogInformation($"Controller action executed on {DateTime.Now.TimeOfDay}");
+            var result = logic.ReadAll().ToList();
+            logger.LogInformation($"Database has {result.Count} customer.");
+            return result;
+
         }
     }
 }

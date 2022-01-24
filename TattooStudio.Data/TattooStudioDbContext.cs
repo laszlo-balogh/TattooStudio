@@ -4,28 +4,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TattooStudio.Data.Settings;
 using TattooStudio.Models;
 
 namespace TattooStudio.Data
 {
     public class TattooStudioDbContext : DbContext
     {
+        private readonly DatabaseSettings databaseSettings;
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Work> Works { get; set; }
         public virtual DbSet<ReadyTattoo> ReadyTattoos { get; set; }
         public virtual DbSet<Tattoo> Tattoos { get; set; }
 
-        public TattooStudioDbContext()
+        public TattooStudioDbContext(DatabaseSettings databaseSettings)
         {
+            this.databaseSettings = databaseSettings;
             this.Database.EnsureCreated();
         }
-        public TattooStudioDbContext(DbContextOptions<TattooStudioDbContext> options) : base(options) { }
+        public TattooStudioDbContext(DbContextOptions<TattooStudioDbContext> options,DatabaseSettings databaseSettings) : base(options) {
+            this.databaseSettings = databaseSettings;
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\TattooStudio_DataBase.mdf;Integrated Security=True");
+                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(databaseSettings.ConnectionString);
             }
         }
 
