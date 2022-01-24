@@ -54,5 +54,14 @@ namespace TattooStudio.Models
         [NotMapped]
         public int WorkID { get; set; }       
         public int Price { get; set; }
+
+
+        #region AUDIT
+
+        public DateTime CreatedAt { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DeletedAt { get; set; }
+
+        #endregion
     }
 }

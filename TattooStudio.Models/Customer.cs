@@ -21,6 +21,16 @@ namespace TattooStudio.Models
         public string Email { get; set; }
         [Required]
         public DateTime BornDate { get; set; }
+
+        #region AUDIT
+
+        public DateTime CreatedAt { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DeletedAt { get; set; }
+
+        #endregion
+
+
         [JsonIgnore]
         [NotMapped]
         public virtual List<Work> Works { get; set; }

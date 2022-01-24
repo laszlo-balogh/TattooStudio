@@ -27,6 +27,14 @@ namespace TattooStudio.Models
         public int TattooCount { get; set; }
         public int Price { get { return Tattoos.Sum(x => x.Price); } }
 
+        #region AUDIT
+
+        public DateTime CreatedAt { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DeletedAt { get; set; }
+
+        #endregion
+
         public Work()
         {
 
