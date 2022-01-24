@@ -10,5 +10,6 @@ namespace TattooStudio.Logic
     public interface ITattooLogic
     {
         List<Tattoo> ReadAll();
+        Tattoo Read(int id);
     }
 }

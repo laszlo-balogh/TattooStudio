@@ -16,6 +16,11 @@ namespace TattooStudio.Logic
             this.tattooRepo = tattooRepo;
         }
 
+        public Tattoo Read(int id)
+        {
+            return this.tattooRepo.Read(id);
+        }
+
         public List<Tattoo> ReadAll()
         {
             return this.tattooRepo.ReadAll();
