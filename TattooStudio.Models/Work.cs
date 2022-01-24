@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -18,11 +19,13 @@ namespace TattooStudio.Models
         [Required]
         [NotMapped]
         [JsonIgnore]
+        
         public virtual Customer Customer { get; set; }
         [ForeignKey(nameof(Customer))]
         public int CustomerID { get; set; }
         [JsonIgnore]
         public virtual List<ReadyTattoo> Tattoos { get; set; }
+
         public DateTime Date { get; set; }
         public int TattooCount { get; set; }
         public int Price { get { return Tattoos.Sum(x => x.Price); } }

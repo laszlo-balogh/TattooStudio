@@ -21,6 +21,14 @@ namespace TattooStudio.Models
 
         [JsonIgnore]
         [NotMapped]
+
+        #region AUDIT
+
+        public DateTime CreatedAt { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DeletedAt { get; set; }
+
+        #endregion
         public virtual List<ReadyTattoo> ReadyTattoos { get; set; }
         public Tattoo()
         {
