@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using TattooStudio.Models;
 
 namespace TattooStudio.Endpoint.Validators
 {
@@ -11,7 +13,9 @@ namespace TattooStudio.Endpoint.Validators
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if (value.GetType().IsEnum)
+            var v = Enum.GetValues<Samples>();
+
+            if (Enum.TryParse<Samples>(value.ToString(),out Samples result))
             {
                 return ValidationResult.Success;
             }

@@ -25,6 +25,41 @@ namespace TattooStudio.Endpoint.Controllers
             this.mapper = mapper;
         }
 
+
+        [HttpPost]
+        public IActionResult Post([FromBody] TattooDto tattoo)
+        {
+            // a paraméterként megkapott customerben minden benne van, create at,deleteat stb, ezek nem kkelenk, ezért kimentjük a szükséges adatokat
+            //egy customer-be majd ezek alapján hozzuk létre a DB-be beszúrni kívánt customert, és vissza is csak ezeket a szükséges adatokat adjuk
+
+            Tattoo tattooodb = null;
+            try
+            {
+                var mappedTattoo = mapper.Map<Tattoo>(tattoo);
+
+                tattooodb = logic.Create(mappedTattoo);
+
+                if (tattooodb == null)
+                {
+                    return StatusCode(500);
+                }
+                else
+                {
+                    var tattDto = mapper.Map<TattooDto>(tattooodb);
+
+                    return Ok(tattDto);
+                }
+
+            }
+            catch (ArgumentException ex)
+            {
+                logger.LogError(ex.GetType().Name + " - " + ex.Message, ex.Message);
+                return StatusCode(400, ex.Message);
+
+            }
+
+        }
+
         [HttpGet]
         public List<TattooDto> Get()
         {

@@ -17,7 +17,7 @@ namespace TattooStudio.Endpoint.DTOs
         [MinLength(1)]
         public string Name { get; set; }
 
-        [CustomEmailValidator]
+       [CustomEmailValidator]
         public string Email { get; set; }
 
         [DefaultDateTimeValidator]

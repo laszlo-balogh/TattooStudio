@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TattooStudio.Models
 {
-    public enum Samples { Animal, Person, Abstract, Name }
+    public enum Samples { Animal=1, Person, Abstract, Name }
 
     [Table("Tattoos")]
     public class Tattoo
